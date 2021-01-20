@@ -1,14 +1,14 @@
 class ReviewsController < ApplicationController
-    before_action :authorized, only:[:create]
+    # before_action :authorized, only:[:create]
 
     def index
-        reviews = Reviews.all
+        reviews = Review.all
         render json: reviews
     end
 
     def show
         review = Review.find_by(params[:id])
-        render json: reviews
+        render json: review
     end
 
     def create
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
         review.destroy
         render json: {error: "Review Removed"}
     end
-
+    private
     def review_params
         params.require(:review).permit(:user_id, :game_id, :user_username, :game_name, :reviewed_game, :rating)
     end
