@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :games
   
+
   post "/login", to: "users#login"
   get "/persist", to: "users#persist"
 
