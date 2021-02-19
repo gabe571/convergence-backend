@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     # before_action :authorized, only:[:create]
-    before_action :authenticate_with_http_digest, only: [:new, :create]
+  
 
     def index
         reviews = Review.all
@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
         render json: review
     end
 
+       
     def create
         game = Game.find_or_create_by(name: params[:review][:game_name])
         review = Review.new(review_params)
